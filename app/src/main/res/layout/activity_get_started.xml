@@ -38,6 +38,7 @@
         android:id="@+id/button"
         android:layout_width="254dp"
         android:layout_height="72dp"
+        android:pointerIcon="hand"
         android:text="Book A Ticket"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,4 +46,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.184" />
+
+    <TextView
+        android:id="@+id/goToAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:pointerIcon="hand"
+        android:text="Admin"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.015" />
 </androidx.constraintlayout.widget.ConstraintLayout>

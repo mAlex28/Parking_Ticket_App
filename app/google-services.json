@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "614384538601",
+    "project_id": "parkingticketapp-c949f",
+    "storage_bucket": "parkingticketapp-c949f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614384538601:android:e83ff46af39315ec027178",
+        "android_client_info": {
+          "package_name": "com.example.parkingticketapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614384538601-nqjtn8tam1rmqqfrh5o00gnppjt3r852.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-7K-Kcw32o-mNSnPFCVBjWngCx2DDJ_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614384538601-nqjtn8tam1rmqqfrh5o00gnppjt3r852.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
