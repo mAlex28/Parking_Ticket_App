@@ -8,23 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GetStarted extends AppCompatActivity{
+public class GetStarted extends AppCompatActivity implements View.OnClickListener {
 
+    private TextView admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_started);
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
 
-
+        admin = (TextView) findViewById(R.id.goToAdmin);
+        admin.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(this, Login.class));
+    }
 }

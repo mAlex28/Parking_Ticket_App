@@ -140,6 +140,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                         mProgressBar.setVisibility(View.GONE);
 
                                         // redirect to login
+                                        startActivity(new Intent(Register.this, Login.class));
                                     } else {
                                         Toast.makeText(Register.this, "Admin registration failed", Toast.LENGTH_LONG).show();
                                         mProgressBar.setVisibility(View.GONE);
