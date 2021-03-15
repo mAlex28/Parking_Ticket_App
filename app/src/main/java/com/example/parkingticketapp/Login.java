@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView register, resetPassword;
+    private TextView register, resetPassword, getStarted;
     private EditText mEmail, mPassword;
     private Button mLogin;
 
@@ -40,6 +40,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         resetPassword = (TextView) findViewById(R.id.forgotPassword);
         resetPassword.setOnClickListener(this);
+
+        getStarted = (TextView) findViewById(R.id.getStarted);
+        getStarted.setOnClickListener(this);
 
         mLogin = (Button) findViewById(R.id.loginBtn);
         mLogin.setOnClickListener(this);
@@ -61,6 +64,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.forgotPassword:
                 startActivity(new Intent(this, ResetPassword.class));
                 break;
+            case R.id.getStarted:
+                startActivity(new Intent(this, GetStarted.class));
             case R.id.loginBtn:
                 userLogin();
                 break;

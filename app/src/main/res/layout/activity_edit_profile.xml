@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".EditProfile">
 
     <TextView
         android:id="@+id/textView9"
@@ -36,20 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.304" />
 
-    <TextView
-        android:id="@+id/displayUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:paddingTop="4dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/material_on_background_emphasis_high_type"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toEndOf="@+id/textUsername"
-        app:layout_constraintTop_toBottomOf="@+id/displayFullname"
-        app:layout_constraintVertical_bias="0.065" />
+
 
     <TextView
         android:id="@+id/textUsername"
@@ -83,41 +70,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textUsername"
         app:layout_constraintVertical_bias="0.065" />
 
-    <TextView
-        android:id="@+id/displayEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:paddingTop="4dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/material_on_background_emphasis_high_type"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
-        app:layout_constraintStart_toEndOf="@+id/textEmail"
-        app:layout_constraintTop_toBottomOf="@+id/displayUsername"
-        app:layout_constraintVertical_bias="0.066" />
-
-    <TextView
-        android:id="@+id/displayFullname"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:paddingTop="4dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/material_on_background_emphasis_high_type"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toEndOf="@+id/textFullname"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
-
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/saveBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Edit profile"
+        android:text="Save Changes"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,10 +82,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/resetPassBtn"
+        android:id="@+id/cancelBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Reset password"
+        android:layout_marginBottom="304dp"
+        android:text="Cancel"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,16 +94,44 @@
         app:layout_constraintTop_toBottomOf="@+id/editButton"
         app:layout_constraintVertical_bias="0.00999999" />
 
-    <Button
-        android:id="@+id/goToDashboard"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Go to dashboard"
-        android:textSize="15sp"
+    <EditText
+        android:id="@+id/editFullname"
+        android:layout_width="487dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetPassBtn"
-        app:layout_constraintVertical_bias="0.00999999" />
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toEndOf="@+id/textFullname"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <EditText
+        android:id="@+id/editUsername"
+        android:layout_width="487dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toEndOf="@+id/textFullname"
+        app:layout_constraintTop_toBottomOf="@+id/editFullname"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="487dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toEndOf="@+id/textEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editUsername"
+        app:layout_constraintVertical_bias="0.063" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

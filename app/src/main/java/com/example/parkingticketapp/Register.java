@@ -73,7 +73,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private void registerUser() {
         String email = mEmail.getText().toString().trim();
         String fullname = mFullName.getText().toString().trim();
-        String user = mUsername.getText().toString().trim();
+        String username = mUsername.getText().toString().trim();
         String pass = mPassword.getText().toString().trim();
         String confpass = mConfPassword.getText().toString().trim();
 
@@ -83,7 +83,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (user.isEmpty()) {
+        if (username.isEmpty()) {
             mUsername.setError("Username is required");
             mUsername.requestFocus();
             return;
@@ -128,7 +128,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Admin admin = new Admin(fullname, user, email);
+                            Admin admin = new Admin(fullname, username, email);
 
                             FirebaseDatabase.getInstance().getReference("Admins")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -17,9 +17,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ResetPassword extends AppCompatActivity {
+public class ResetPassword2 extends AppCompatActivity {
 
-    private TextView goToLogin;
+    private TextView cancel;
     private Button mResetBtn;
     private EditText mEmail;
     private ProgressBar progressBar;
@@ -29,13 +29,13 @@ public class ResetPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_password);
+        setContentView(R.layout.activity_reset_password2);
 
-        goToLogin = (TextView) findViewById(R.id.backToLogin);
-        goToLogin.setOnClickListener(new View.OnClickListener() {
+        cancel = (TextView) findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ResetPassword.this, Login.class));
+                startActivity(new Intent(ResetPassword2.this, Profile.class));
             }
         });
 
@@ -74,9 +74,9 @@ public class ResetPassword extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(ResetPassword.this, "Check your mail to reset your password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ResetPassword2.this, "Check your mail to reset your password", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(ResetPassword.this, "Oops.. something went wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ResetPassword2.this, "Oops.. something went wrong", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -7,6 +7,20 @@
     tools:context=".Login">
 
     <TextView
+        android:id="@+id/getStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:pointerIcon="hand"
+        android:text="Get Started Page"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

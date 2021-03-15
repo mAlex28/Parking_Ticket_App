@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class GetStarted extends AppCompatActivity implements View.OnClickListener {
 
     private TextView admin;
+    private Button bookTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +21,21 @@ public class GetStarted extends AppCompatActivity implements View.OnClickListene
 
         admin = (TextView) findViewById(R.id.goToAdmin);
         admin.setOnClickListener(this);
+
+        bookTicket = (Button) findViewById(R.id.buttonTicket);
+        bookTicket.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, Login.class));
+        switch (v.getId()) {
+            case R.id.goToAdmin:
+                startActivity(new Intent(this, Login.class));
+                break;
+            case R.id.buttonTicket:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
     }
 }
