@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +27,11 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference reference;
     private String adminId;
 
-    private TextView fullnameTextView, usernameTextView, emailTextView;
+    private EditText updateFullname, updateUsername, updateEmail;
 
     private Button resetPassword, goToDashboard, editProfile;
+
+    String _USERNAME, _NAME, _EMAIL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +44,21 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         goToDashboard = (Button) findViewById(R.id.goToDashboard);
         goToDashboard.setOnClickListener(this);
 
-        editProfile = (Button) findViewById(R.id.editButton);
-        editProfile.setOnClickListener(this);
-
         admin = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Admins");
         adminId = admin.getUid();
 
-        fullnameTextView = (TextView) findViewById(R.id.displayFullname);
-        usernameTextView = (TextView) findViewById(R.id.displayUsername);
-        emailTextView = (TextView) findViewById(R.id.displayEmail);
+        updateFullname = (EditText) findViewById(R.id.displayFullname);
+        updateUsername = (EditText) findViewById(R.id.displayUsername);
+        updateEmail = (EditText) findViewById(R.id.displayEmail);
 
+        displayAdmin();
+
+        editProfile = (Button) findViewById(R.id.editButton);
+        editProfile.setOnClickListener(this);
+    }
+
+    private void displayAdmin() {
         reference.child(adminId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -62,9 +69,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                     String username = adminProfile.username;
                     String email = adminProfile.email;
 
-                    fullnameTextView.setText(fullname);
-                    usernameTextView.setText(username);
-                    emailTextView.setText(email);
+                    updateFullname.setText(fullname);
+                    updateUsername.setText(username);
+                    updateEmail.setText(email);
+
+                    _NAME = updateFullname.getText().toString();
+                    _USERNAME = updateUsername.getText().toString();
+                    _EMAIL = updateEmail.getText().toString();
+
                 }
             }
 
@@ -73,7 +85,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(Profile.this, "Oops... something went wrong", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     @Override
@@ -86,12 +97,43 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(this, Dashboard.class));
                 break;
             case R.id.editButton:
-                Intent i = new Intent(v.getContext(), EditProfile.class);
-                i.putExtra("fullname", fullnameTextView.getText().toString());
-                i.putExtra("username", usernameTextView.getText().toString());
-                i.putExtra("email", emailTextView.getText().toString());
-                startActivity(i);
+                updateData();
                 break;
+        }
+    }
+
+    private void updateData() {
+        if (isNameChanged() || isUsernameChanged() || isEmailChanged()) {
+            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error occurred. Unable to update data", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isEmailChanged() {
+        if (_EMAIL.equals(updateEmail.getText().toString())) {
+            reference.child(adminId).child("email").setValue(updateEmail.getText().toString());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isUsernameChanged() {
+        if (_USERNAME.equals(updateUsername.getText().toString())) {
+            reference.child(adminId).child("username").setValue(updateUsername.getText().toString());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isNameChanged() {
+        if (_NAME.equals(updateFullname.getText().toString())) {
+            reference.child(adminId).child("fullname").setValue(updateFullname.getText().toString());
+            return true;
+        } else {
+            return false;
         }
     }
 }
