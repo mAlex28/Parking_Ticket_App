@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Parking Ticket App</string>
+
+    <string-array name="type">
+        <item>Car</item>
+        <item>Van</item>
+        <item>Motorcycle</item>
+        <item>Three-wheeler</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="hours">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
