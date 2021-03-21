@@ -1,70 +1,44 @@
 package com.example.parkingticketapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.NumberFormat;
-
-public class MainActivity extends AppCompatActivity {
-    private EditText mNumber;
-    private TextView mTotal;
-    private Spinner mType, mHours;
-    private Button mPrintTicket;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    CardView mCar, mBike, mWheeler, mOther;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNumber = (EditText) findViewById(R.id.vehicleNo);
-        mTotal = (TextView) findViewById(R.id.totPrice);
-        mPrintTicket = (Button) findViewById(R.id.buttonTicket);
+        mCar = (CardView) findViewById(R.id.car);
+        mCar.setOnClickListener(this);
 
-        mType = (Spinner) findViewById(R.id.vehicleType);
-        ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(this, R.array.type, android.R.layout.simple_spinner_item);
-        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mType.setAdapter(typeAdapter);
-        mType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int type = mType.getSelectedItemPosition() + 1;
-                Toast.makeText(MainActivity.this, type, Toast.LENGTH_LONG).show();
-            }
+        mBike = (CardView) findViewById(R.id.bike);
+        mBike.setOnClickListener(this);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        mWheeler = (CardView) findViewById(R.id.wheeler);
+        mWheeler.setOnClickListener(this);
 
-            }
-        });
-
-        mHours = (Spinner) findViewById(R.id.hours);
-        ArrayAdapter<CharSequence> hourAdapter = ArrayAdapter.createFromResource(this, R.array.hours, android.R.layout.simple_spinner_item);
-        hourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mHours.setAdapter(hourAdapter);
-        mHours.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        mOther = (CardView) findViewById(R.id.other);
+        mOther.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.car:
+            case R.id.other:
+            case R.id.bike:
+            case R.id.wheeler:
+                startActivity(new Intent(this, Ticket.class));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
+    }
 }
