@@ -55,6 +55,7 @@
                     android:src="@drawable/car" />
 
                 <TextView
+                    android:id="@+id/typeCar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Car"
@@ -90,6 +91,7 @@
                     android:src="@drawable/bike" />
 
                 <TextView
+                    android:id="@+id/typeBike"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bike"
@@ -125,6 +127,7 @@
                     android:src="@drawable/wheeler" />
 
                 <TextView
+                    android:id="@+id/typeWheeler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tuk-tuk"
@@ -160,6 +163,7 @@
                     android:src="@drawable/van" />
 
                 <TextView
+                    android:id="@+id/typeOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Other"
