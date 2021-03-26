@@ -47,7 +47,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.284"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.632" />
@@ -70,11 +70,13 @@
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:gravity="center"
+        android:hint="Select up to 5 hours"
         android:inputType="textPersonName"
         android:padding="15dp"
-        android:hint="Select up to 5 hours"
-        android:textColor="@color/material_on_background_disabled"
-        android:textSize="24dp"
+        android:textAlignment="center"
+        android:textColor="@color/material_on_background_emphasis_high_type"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,20 +85,20 @@
 
     <TextView
         android:id="@+id/totalPrice"
-        android:layout_width="369dp"
-        android:layout_height="63dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="15dp"
-        android:textColor="@color/material_on_background_disabled"
+        android:textColor="@color/material_on_background_emphasis_high_type"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toEndOf="@+id/title4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <EditText
         android:id="@+id/vehicleNO"
@@ -104,11 +106,12 @@
         android:layout_height="60dp"
         android:layout_marginTop="47dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="15dp"
         android:hint="Vehicle number"
-        android:textColor="@color/material_on_background_disabled"
-        android:textSize="24dp"
+        android:inputType="textCapCharacters"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/material_on_background_emphasis_high_type"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,13 +120,14 @@
 
     <Button
         android:id="@+id/btnPrint"
-        android:layout_width="243dp"
-        android:layout_height="57dp"
+        android:layout_width="281dp"
+        android:layout_height="68dp"
         android:text="Print Ticket"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
+        app:layout_constraintVertical_bias="0.769" />
 </androidx.constraintlayout.widget.ConstraintLayout>
