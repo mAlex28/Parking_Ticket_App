@@ -1,12 +1,9 @@
 package com.example.parkingticketapp;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -22,11 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Ticket extends AppCompatActivity {
     private TextView mTotPrice;
@@ -34,7 +28,7 @@ public class Ticket extends AppCompatActivity {
     private Button printTicket;
     private String type;
 
-    private FirebaseAuth mAuth;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +37,6 @@ public class Ticket extends AppCompatActivity {
 
         Intent i = getIntent();
         type = i.getStringExtra("type");
-
-        mAuth = FirebaseAuth.getInstance();
 
         mTotPrice = findViewById(R.id.totalPrice);
         mHours = findViewById(R.id.hours);
@@ -80,15 +72,19 @@ public class Ticket extends AppCompatActivity {
                     return;
 
                 } else {
-                    // store vehicle infor in firebase
-                   Vehicle vehicle = new Vehicle(date, vVehicleNo, type, vHours, vTotal);
-                   FirebaseDatabase.getInstance().getReference("VehicleInfo").setValue(vehicle);
 
-                   startActivity(new Intent(Ticket.this, PrintTicket.class));
+                    // store vehicle info in firebase
+                    Vehicle vehicle = new Vehicle(date, vVehicleNo, type, vHours, vTotal);
+                    reference = FirebaseDatabase.getInstance().getReference().child("VehicleInfo");
+                    reference.push().setValue(vehicle);
+
+                    startActivity(new Intent(Ticket.this, PrintTicket.class));
+
                 }
             }
         });
     }
+
 
     private void calculate() {
         String stayingHours = mHours.getText().toString();
