@@ -1,5 +1,6 @@
 package com.example.parkingticketapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,24 +9,65 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton logout, profile;
+
+    ListView vehicleView;
+    List<Vehicle> vehicleList;
+
+    DatabaseReference vehicleReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        logout = (ImageButton) findViewById(R.id.logout);
+        logout = findViewById(R.id.logout);
         logout.setOnClickListener(this);
 
-        profile = (ImageButton) findViewById(R.id.profile);
+        profile = findViewById(R.id.profile);
         profile.setOnClickListener(this);
+
+        vehicleView = findViewById(R.id.vehicleListView);
+        vehicleList = new ArrayList<>();
+
+        vehicleReference = FirebaseDatabase.getInstance().getReference("VehicleInfo");
+
+        vehicleReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                vehicleList.clear();
+
+                for (DataSnapshot vehicleDataSnap : snapshot.getChildren()) {
+                    Vehicle vehicle = vehicleDataSnap.getValue(Vehicle.class);
+                    vehicleList.add(vehicle);
+                }
+
+                ListAdapter adapter = new ListAdapter(Dashboard.this, vehicleList);
+                vehicleView.setAdapter(adapter);
+                vehicleView.setStackFromBottom(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -37,8 +79,6 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.logout:
                 logoutAlert();
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(this, Login.class));
                 break;
         }
     }
