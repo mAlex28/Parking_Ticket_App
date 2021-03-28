@@ -78,8 +78,15 @@ public class Ticket extends AppCompatActivity {
                     reference = FirebaseDatabase.getInstance().getReference().child("VehicleInfo");
                     reference.push().setValue(vehicle);
 
-                    startActivity(new Intent(Ticket.this, PrintTicket.class));
-
+                    Bundle bundle = new Bundle();
+                    bundle.putString("time", date);
+                    bundle.putString("number", vVehicleNo);
+                    bundle.putString("type", type);
+                    bundle.putString("hours", vHours);
+                    bundle.putString("total", vTotal);
+                    Intent i = new Intent(Ticket.this, PrintTicket.class);
+                    i.putExtras(bundle);
+                    startActivity(i);
                 }
             }
         });
