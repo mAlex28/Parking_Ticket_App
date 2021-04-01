@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetStarted">
+    tools:context=".GetStarted"
+    android:keepScreenOn="true">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="476dp"
         android:layout_height="475dp"
+        android:contentDescription="get started image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
