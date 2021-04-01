@@ -31,7 +31,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     private Button resetPassword, goToDashboard, editProfile;
 
-    String _USERNAME, _NAME, _EMAIL;
+    String _USERNAME = null;
+    String _NAME = null;
+    String _EMAIL = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +75,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                     updateUsername.setText(username);
                     updateEmail.setText(email);
 
-                    _NAME = updateFullname.getText().toString();
-                    _USERNAME = updateUsername.getText().toString();
-                    _EMAIL = updateEmail.getText().toString();
-
                 }
             }
 
@@ -103,6 +101,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void updateData() {
+        _NAME = updateFullname.getText().toString();
+        _USERNAME = updateUsername.getText().toString();
+        _EMAIL = updateEmail.getText().toString();
+
         if (isNameChanged() || isUsernameChanged() || isEmailChanged()) {
             Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
         } else {

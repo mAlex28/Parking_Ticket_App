@@ -2,17 +2,24 @@ package com.example.parkingticketapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class PrintTicket extends AppCompatActivity {
 
     private TextView timeview, numberview, typeview, hoursview, priceview;
+    private ProgressBar mProgressBar;
     private Button printTicketBtn;
     private String time, number, type, hours, total;
+    private int i = 0;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,36 @@ public class PrintTicket extends AppCompatActivity {
         hoursview.setText(hours);
         priceview.setText(total);
 
+        mProgressBar = findViewById(R.id.progressBar);
         printTicketBtn = findViewById(R.id.printTicket);
 
-
-
+        printTicketBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                i = mProgressBar.getProgress();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (i < 100) {
+                            i += 1;
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(i);
+                                    startActivity(new Intent(PrintTicket.this, GetStarted.class));
+                                }
+                            });
+                            try {
+                                // Sleep for 50 ms to show progress you can change it as well.
+                                Thread.sleep(50);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+            }
+        });
     }
 }

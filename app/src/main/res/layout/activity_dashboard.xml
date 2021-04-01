@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Dashboard">
 
     <LinearLayout
@@ -108,7 +108,7 @@
     <ListView
         android:id="@+id/vehicleListView"
         android:layout_width="725dp"
-        android:layout_height="766dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"/>
 
 </LinearLayout>
