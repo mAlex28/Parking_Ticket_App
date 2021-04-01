@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Libraries used for printing
-//    implementation 'com.github.mazenrashed:Printooth:1.2.1'
-//    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.mazenrashed:Printooth:1.2.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

@@ -19,6 +19,7 @@ public class PrintTicket extends AppCompatActivity {
     private Button printTicketBtn;
     private String time, number, type, hours, total;
     private int i = 0;
+//    Printing printing;
     private Handler handler = new Handler();
 
     @Override

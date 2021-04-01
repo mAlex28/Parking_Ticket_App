@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseUser admin;
@@ -58,6 +61,22 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
         editProfile = (Button) findViewById(R.id.editButton);
         editProfile.setOnClickListener(this);
+
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+                Intent intent = new Intent(Profile.this, Dashboard.class);
+                startActivity(intent);
+                finishscreen();
+            }
+        };
+        Timer t = new Timer();
+        t.schedule(task, 60000);
+    }
+
+    private void finishscreen() {
+        this.finish();
     }
 
     private void displayAdmin() {

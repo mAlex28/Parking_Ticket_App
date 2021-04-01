@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -21,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Ticket extends AppCompatActivity {
     private TextView mTotPrice;
@@ -90,8 +93,23 @@ public class Ticket extends AppCompatActivity {
                 }
             }
         });
+
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+                Intent intent = new Intent(Ticket.this, GetStarted.class);
+                startActivity(intent);
+                finishscreen();
+            }
+        };
+        Timer t = new Timer();
+        t.schedule(task, 60000);
     }
 
+    private void finishscreen() {
+        this.finish();
+    }
 
     private void calculate() {
         String stayingHours = mHours.getText().toString();

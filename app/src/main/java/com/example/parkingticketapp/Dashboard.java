@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -26,6 +27,8 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton logout, profile;
+    private Handler handler;
+    private Runnable r;
 
     ListView vehicleView;
     List<Vehicle> vehicleList;
@@ -69,6 +72,27 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+        handler = new Handler();
+        r = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(Dashboard.this, "user is inactive from last 10 minutes",Toast.LENGTH_SHORT).show();
+            }
+        };
+        startHandler();
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        stopHandler();//stop first and then start
+        startHandler();
+    }
+    public void stopHandler() {
+        handler.removeCallbacks(r);
+    }
+    public void startHandler() {
+        handler.postDelayed(r, 10*60*1000); //for 5 minutes
     }
 
     @Override
